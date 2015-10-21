@@ -7,6 +7,7 @@ cd TutoReact
 npm install
 npm start
 ```
+le repo de base : https://github.com/gaearon/react-transform-boilerplate 
 
 ### déclarer un Composant React :
 
