@@ -1,11 +1,28 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import TodoList from './TodoList'
+import Header from './Header'
 
 export class App extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      todosById: {}
+      todosById: {
+        '1': {
+          id: 1,
+          text: 'salut'
+        },
+
+        '2': {
+          id: 2,
+          text: 'salut!'
+        },
+
+        '3': {
+          id: 3,
+          text: 'salut!!'
+        },
+      }
     };
   }
 

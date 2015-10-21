@@ -1,13 +1,12 @@
 import React, { PropTypes } from 'react'
 
-const TodoItem = ({text}) => <li>{text}</li>
+const TodoItem = ({
+  text = 'Passer un `text` en props'
+}) => <li>{text}</li>
 
 TodoItem.propTypes = {
   text: PropTypes.string.isRequired
 }
 
-TodoItem.defaultProps = {
-  text: 'Passer un `text`en props'
-}
 
 export default TodoItem
