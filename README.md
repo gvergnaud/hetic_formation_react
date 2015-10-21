@@ -2,7 +2,8 @@
 
 récuperer le react transform boilerplate. => workflow hot swaping trop cool ;)
 ```
-git clone https://github.com/gvergnaud/prez-react.git TutoReact
+git clone https://github.com/gvergnaud/prez-react.git
+cd TutoReact
 npm install
 npm start
 ```
