@@ -2,13 +2,7 @@
 
 récuperer le react transform boilerplate. => workflow hot swaping trop cool ;)
 ```
-git clone https://github.com/gaearon/react-transform-boilerplate.git TutoReact
-```
-```
-npm install react@latest --save
-```
-Instalation de la dernière version de react (le repo est pas à jour)
-```
+git clone https://github.com/gvergnaud/prez-react.git TutoReact
 npm install
 npm start
 ```
@@ -124,6 +118,18 @@ render() {
 ##### `this.context`
 permet d'acceder au context créé par un composant parent.
 
+admettons que nous avons une composition de components qui resemble à ça :
+```js
+<Parent>
+  <Bla>
+    <Ble>
+      <Bli>
+        <Child />
+      </Bli>
+    </Ble>
+  </Bla>
+</Parent>
+```
 ```js
 // <Parent />
 static childContextTypes = {
