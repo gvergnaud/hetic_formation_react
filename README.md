@@ -65,8 +65,11 @@ Ok.
 
 #### JSX
 
-React permet de faire du
+TODO :
 
+
+
+#### Pratique
 
 récuperer le react transform boilerplate. => workflow hot swaping trop cool ;)
 ```
