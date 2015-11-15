@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
 import TodoList from './TodoList'
 import Header from './Header'
 import pick from './utils/pick'
@@ -24,14 +24,14 @@ export class App extends Component {
           text: 'salut!!'
         }
       }
-    };
+    }
   }
 
   _addTodo(text) {
     const newTodo = {
       id: Date.now(),
       text
-    };
+    }
 
     this.setState({
       todosById: {
@@ -46,7 +46,7 @@ export class App extends Component {
 
     this.setState({
       todosById: filteredTodos
-    });
+    })
   }
 
   _getTodoList() {
@@ -62,6 +62,6 @@ export class App extends Component {
           todos={this._getTodoList()}
         />
       </div>
-    );
+    )
   }
 }

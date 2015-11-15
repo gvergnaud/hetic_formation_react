@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
 
 class Header extends Component {
 
@@ -8,8 +8,8 @@ class Header extends Component {
 
   _handleKeyUp(e) {
     if (e.which === 13) {
-      this.props.addTodo(this.refs.text.value);
-      this.refs.text.value = '';
+      this.props.addTodo(this.refs.text.value)
+      this.refs.text.value = ''
     }
   }
 
@@ -26,4 +26,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default Header
