@@ -1,4 +1,72 @@
-# Prez React
+# React, la base
+
+## Un peu de théorie
+React, en vrai ça fait un seul truc. Ça permet d'aborder le DOM comme une simple fonction. Plus précisement une composition de fonctions pures, qui définissent chacune un composant.
+
+#### Une fonction pure ?
+Une fonction pure est une fonction qui respect quelques règles. C'est une fonction qui :
+- prend des paramètres et retourne un résultat unique
+- n'altère pas les paramètres qui lui sont passés
+- n'intéragit pas avec le scope dans lequel elle se trouve directement.
+- n'a pas d'effet de bord (side effects).
+
+Le respect de ces règles permet de définir des fonctions au sujet desquelles il est très facile de raisonner. Cela permet de réfléchir sous forme de petites unités logiques séparés et de les utiliser en sachant ce quelle font sans savoir comment elle le font. Pas mal hein ?
+
+pour en savoir plus => [Mostly Adequate Guid To Functionnal Programming](https://drboolean.gitbooks.io/mostly-adequate-guide/content/)
+
+#### Du HTML, une fonction ? WTF
+
+Pas si déconant que ça en fait. Pour construire des applications web, le HTML est assez limité, puisqu'il a été conçu pour décrire une structure de page qui ne change pas au cours du temps. React, c'est une solution très efficace pour répondre à cette problématique d'UI évolutive.
+
+#### Découper l'interfaces en composants
+
+React permet de découper son UI en composants imbriqués les uns dans les autres.
+
+![Components explained](http://coenraets.org/blog/wp-content/uploads/2014/12/uimockscript.png)
+
+Cette application peut donc être exprimée comme ceci :
+
+```html
+<App>
+  <HomePage>
+    <Header />
+    <SearchBar />
+    <EmployeeList>
+      <EmployeeListItem />
+      ...
+    </EmployeeList>
+  </HomePage>
+  <EmployeePage>
+    <Header />
+    <ContentLayout />
+  </EmployeePage>
+</App>
+```
+
+Chacun de ces tags définis en XML représentent un composant, qui ne s'occupe que de lui même, **sans avoir conscience de l'application dans laquelle il se trouve**. C'est ça qui rend la logique de composants vraiment puissante, elle permet de pouvoir réfléchir une interface aussi complexe qu'elle puisse être comme une composition de petite briques simples.
+
+#### Une UI Réactive ©
+
+React utilise la notion de state, c'est à dire l'état actuel de notre application. Ce state est représenté par un objet. À chaque fois que cet objet est modifié, notre UI est à nouveau rendu. On peut donc se concentrer sur la modification de l'état de notre application, sans avoir à penser du tout à la manière dont elle est rendu. Mine de rien, c'est une petite révolution.
+
+![](http://i.imgur.com/aLVWGPe.png)
+
+( *re-render de l'arbre de composants lors d'une modification du state* )
+
+#### Et niveau perf ?
+
+React fait le minimum de manipulation de DOM possible, sachant que les opérations de modification du DOM sont les plus lentes. À priori c'est pas mal donc, mais ce n'est pas gratuit. Pour savoir ce qui doit être modifié, React garde constamment en mémoire une représentation du DOM sous forme de d'object JS. C'est le fameux **virtual DOM**. Grâce à lui, on peut faire des diffs entre le DOM avant et après une modification de state, et donc savoir quels elements doivent être refresh.
+
+Le petit bémole, c'est que ce virtual DOM peut consommer pas mal de mémoire cache, ce qui pose problèmes pour des grosses applications consultés sur téléphone.
+
+## On veut du code
+
+Ok.
+
+#### JSX
+
+React permet de faire du
+
 
 récuperer le react transform boilerplate. => workflow hot swaping trop cool ;)
 ```
@@ -7,9 +75,9 @@ cd TutoReact
 npm install
 npm start
 ```
-le repo de base : https://github.com/gaearon/react-transform-boilerplate 
+le repo de base : https://github.com/gaearon/react-transform-boilerplate
 
-### déclarer un Composant React :
+#### déclarer un Composant React :
 
 ```js
 import React, { Component } from 'react';
@@ -37,7 +105,7 @@ export default MyComponent;
 
 Note : il faut penser a import React, même si il est pas utilisé, sinon le jsx est pas parsé.
 
-### Composer les components :
+#### Composer les components :
 
 ```js
 import React, { Component } from 'react';
@@ -54,7 +122,7 @@ export class App extends Component {
 }
 ```
 
-### style guide
+#### style guide
  https://github.com/Khan/style-guides/blob/master/style/react.md
 
 En bref :
@@ -63,7 +131,7 @@ En bref :
 - les méthodes créées préfixées par `_` . exemple :   `_myMethode() {}`
 - méthode render à la fin.
 
-### Lifecycle
+#### Lifecycle
 dans l'ordre :
 ```js
 componentWillMount() {}
@@ -81,9 +149,9 @@ componentDidUpdate(prevProps, prevState) {}
 componentWillUnmount() {}
 ```
 
-### `this`
+#### `this`
 
-##### `this.state`
+###### `this.state`
 
 on set le state grâce à
 
@@ -91,10 +159,10 @@ on set le state grâce à
 this.setState({})
 ```
 
-##### `this.props`
+###### `this.props`
 read only
 
-##### `this.refs`
+###### `this.refs`
 les références sont un moyen de récupérer un DomNode dans l'une des méthodes du composant. par exemple :
 
 ```js
@@ -117,7 +185,7 @@ render() {
  }
 ```
 
-##### `this.context`
+###### `this.context`
 permet d'acceder au context créé par un composant parent.
 
 admettons que nous avons une composition de components qui resemble à ça :
@@ -174,7 +242,7 @@ class MyComponent extends Component {
 
 Tout ce qu'il y a à savoir ici : http://ricostacruz.com/cheatsheets/react.html
 
-##### les trucs importants :
+###### les trucs importants :
 les types de base :
 
 ```js

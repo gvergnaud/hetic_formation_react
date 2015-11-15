@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import TodoList from './TodoList'
 import Header from './Header'
+import pick from './utils/pick'
 
 export class App extends Component {
 
@@ -21,7 +22,7 @@ export class App extends Component {
         '3': {
           id: 3,
           text: 'salut!!'
-        },
+        }
       }
     };
   }
@@ -41,26 +42,24 @@ export class App extends Component {
   }
 
   _deleteTodo(todoId) {
-    const filteredTodos = Object.keys(this.state.todosById).reduce((filteredTodos, id) => {
-      if (id !== todoId) filteredTodos[id] = this.state.todosById[id];
-      return filteredTodos;
-    }, {});
+    const filteredTodos = pick(this.state.todosById, (value, key) => key != todoId)
 
     this.setState({
       todosById: filteredTodos
     });
   }
 
+  _getTodoList() {
+    return Object.keys(this.state.todosById).map(id => this.state.todosById[id])
+  }
+
   render() {
-
-    const todos = Object.keys(this.state.todosById).map(id => this.state.todosById[id]);
-
     return (
       <div className="App">
         <Header addTodo={::this._addTodo} />
         <TodoList
           onDelete={::this._deleteTodo}
-          todos={todos}
+          todos={this._getTodoList()}
         />
       </div>
     );
