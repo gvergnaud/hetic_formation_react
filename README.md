@@ -63,12 +63,6 @@ Le petit bémole, c'est que ce virtual DOM peut consommer pas mal de mémoire ca
 
 Ok.
 
-#### JSX
-
-TODO :
-
-
-
 #### Pratique
 
 récuperer le react transform boilerplate. => workflow hot swaping trop cool ;)
@@ -79,6 +73,68 @@ npm install
 npm start
 ```
 le repo de base : https://github.com/gaearon/react-transform-boilerplate
+
+
+#### JSX
+
+React vient avec une nouvelle syntaxe, le jsx. Elle permet de définir le DOM de ses composants avec du XML, à même ses fichiers javascript.
+
+```html
+<div>
+  <!-- Hello world -->
+  <div class="awesome" style="border: 1px solid red">
+    <label for="name">Enter your name: </label>
+    <input type="text" id="name" />
+  </div>
+  <p>Enter your HTML here</p>
+</div>
+```
+peut donc s'écrire comma ça :
+
+```js
+render() {
+  return (
+    <div>
+      {/* Hello world */}
+      <div className="awesome" style={{border: '1px solid red'}}>
+        <label htmlFor="name">Enter your name: </label>
+        <input type="text" id="name" />
+      </div>
+      <p>Enter your HTML here</p>
+    </div>
+  );
+}
+```
+
+###### Gotchas :
+
+certains attributs varient :
+`class="awesome"` => `className="awesome"`
+`for="name"` => `htmlFor="name"`
+les commentaires :
+`<!-- Hello world -->` => `{/* Hello world */}`
+
+
+
+###### React sans JSX :
+JSX n'est que du syntax-sugar, qui est compilé en javascript valide. On peut utiliser react sans JSX, mais ça devient vite assez fastidieux.  Voila la définition du DOM en javascript normal :
+
+```js
+render() {
+  return (
+    React.createElement('div', [
+      React.createElement('div', {  className: 'awesome',  style: { border: '1px solid red' }  }, [
+        React.createElement('label', { htmlFor: 'name' }, 'Enter your name:'),
+        React.createElement('input', { type: 'text', id: 'name' })
+      ]),
+      React.createElement('p', 'Enter your HTML here')
+    ])
+  )
+}
+```
+
+C'est toujours cool de savoir comment ça marche.
+
 
 #### déclarer un Composant React :
 
