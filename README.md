@@ -47,7 +47,7 @@ Chacun de ces tags définis en XML représentent un composant, qui ne s'occupe q
 
 #### Une UI Réactive ©
 
-React utilise la notion de state, c'est à dire l'état actuel de notre application. Ce state est représenté par un objet. À chaque fois que cet objet est modifié, notre UI est à nouveau rendu. On peut donc se concentrer sur la modification de l'état de notre application, sans avoir à penser du tout à la manière dont elle est rendu. Mine de rien, c'est une petite révolution.
+React utilise la notion de state, c'est à dire l'état actuel de notre application. Ce `state` est représenté par un objet. À chaque fois que cet objet est modifié, notre UI est à nouveau rendu. On peut donc se concentrer sur la modification de l'état de notre application, sans avoir à penser du tout à la manière dont elle est rendu. Mine de rien, c'est une petite révolution.
 
 ![](http://i.imgur.com/aLVWGPe.png)
 
@@ -331,7 +331,7 @@ PropTypes.arrayOf(PropTypes.number)
 
 définir la forme d'une dataStructure :
 ```js
-{
+Component.propTypes = {
   image: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
@@ -354,7 +354,13 @@ list: PropTypes.arrayOf(
 
 ## ContextTypes
 
-
+```js
+Component.contextTypes = {
+  // défini de la même manière que les propTypes:
+  onAddTodo: PropTypes.func.isRequired
+  // ...
+}
+```
 
 
 Ressources :
