@@ -278,7 +278,7 @@ static contextTypes = {
 }
 
 anyMethod() {
-  this.context.foo // -> 'baz'
+  this.context.foo // -> 'bar'
 }
 ```
 
